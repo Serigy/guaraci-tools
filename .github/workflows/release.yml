@@ -1,0 +1,73 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  release:
+    name: attach vsix to release
+    needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            packages/vscode/package-lock.json
+
+      - name: Install dependencies (packages/vscode)
+        working-directory: packages/vscode
+        run: npm ci
+
+      - name: Package VS Code extension
+        working-directory: packages/vscode
+        run: npx @vscode/vsce package --no-dependencies
+
+      - name: Attach .vsix to GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: packages/vscode/guaraci-*.vsix
+          generate_release_notes: true
+
+  publish-marketplace:
+    name: publish to marketplaces (skipped without secrets)
+    needs: release
+    runs-on: ubuntu-latest
+    env:
+      VSCE_PAT: ${{ secrets.VSCE_PAT }}
+      OVSX_PAT: ${{ secrets.OVSX_PAT }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            packages/vscode/package-lock.json
+
+      - name: Install dependencies (packages/vscode)
+        working-directory: packages/vscode
+        run: npm ci
+
+      # Publishing is skipped unless the repository secrets are configured.
+      - name: Publish to VS Code Marketplace
+        if: ${{ env.VSCE_PAT != '' }}
+        working-directory: packages/vscode
+        run: npx @vscode/vsce publish --no-dependencies -p "$VSCE_PAT"
+
+      - name: Publish to Open VSX
+        if: ${{ env.OVSX_PAT != '' }}
+        working-directory: packages/vscode
+        run: npx ovsx publish --no-dependencies -p "$OVSX_PAT"

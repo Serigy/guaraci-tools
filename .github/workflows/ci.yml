@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            packages/vscode/package-lock.json
+            packages/paseo/package-lock.json
+
+      - name: Install dependencies (packages/vscode)
+        working-directory: packages/vscode
+        run: npm ci
+
+      - name: Syntax check extension.js
+        run: node --check packages/vscode/extension.js
+
+      - name: Grammar snapshot tests
+        working-directory: packages/vscode
+        run: npm run test:grammar
+
+      - name: Install dependencies (packages/paseo)
+        working-directory: packages/paseo
+        run: npm ci
+
+      - name: Typecheck Paseo plugin
+        working-directory: packages/paseo
+        run: npm run typecheck
+
+      - name: Package VS Code extension
+        working-directory: packages/vscode
+        run: npx @vscode/vsce package --no-dependencies
+
+      - name: Upload .vsix artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vscode-extension
+          path: packages/vscode/guaraci-*.vsix
+          if-no-files-found: error
