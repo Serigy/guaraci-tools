@@ -9,6 +9,9 @@ const execFileAsync = promisify(execFile);
 
 const MAX_FILES = 500;
 const MAX_BUFFER = 4 * 1024 * 1024;
+const TIMEOUT_MS = 20_000;
+/** Template mode passed to guaraci check; keep in sync with the VS Code extension default. */
+const MODE = "html";
 
 async function findGcFiles(root: string): Promise<string[]> {
   const out: string[] = [];
@@ -65,22 +68,48 @@ function parseDiagnostics(stdout: string): Map<string, LintDiagnostic[]> | null 
 }
 
 export async function lintTemplates({ cwd }: RpcInput<typeof gcLint>) {
-  const files = (await findGcFiles(path.join(cwd, "views"))).slice(0, MAX_FILES);
+  const found = await findGcFiles(path.join(cwd, "views"));
+  const files = found.slice(0, MAX_FILES);
   if (files.length === 0) {
     return { available: true, results: [] };
   }
   const unchecked = files.map((file) => uncheckedResult(cwd, file));
+  const truncatedHint =
+    found.length > MAX_FILES
+      ? ` (${found.length} .gc templates under views/, showing the first ${MAX_FILES})`
+      : "";
 
   let stdout = "";
   try {
-    const result = await execFileAsync("guaraci", ["check", "--json", ...files], { maxBuffer: MAX_BUFFER });
+    const result = await execFileAsync(
+      "guaraci",
+      ["check", "--json", "--mode", MODE, ...files],
+      { maxBuffer: MAX_BUFFER, timeout: TIMEOUT_MS },
+    );
     stdout = result.stdout;
   } catch (error) {
-    const err = error as NodeJS.ErrnoException & { stdout?: string };
+    const err = error as NodeJS.ErrnoException & { stdout?: string; stderr?: string; killed?: boolean };
     if (err.code === "ENOENT") {
       return {
         available: false,
-        hint: "guaraci CLI not found on the daemon PATH (luarocks install guaraci)",
+        hint: "guaraci CLI not found on the daemon PATH (luarocks install guaraci)" + truncatedHint,
+        results: unchecked,
+      };
+    }
+    if (err.killed) {
+      return {
+        available: false,
+        hint: `guaraci check timed out after ${TIMEOUT_MS / 1000} s` + truncatedHint,
+        results: unchecked,
+      };
+    }
+    // Usage errors (exit code > 1, like exit 2) print nothing on stdout; they must
+    // not be parsed as "no diagnostics found". Mirrors the extension.js behavior.
+    if (typeof err.code === "number" && err.code > 1) {
+      const detail = String(err.stderr ?? "").trim().split("\n")[0] || "";
+      return {
+        available: false,
+        hint: `guaraci check failed with exit ${err.code}${detail ? ": " + detail : ""}` + truncatedHint,
         results: unchecked,
       };
     }
@@ -89,7 +118,7 @@ export async function lintTemplates({ cwd }: RpcInput<typeof gcLint>) {
     } else {
       return {
         available: false,
-        hint: "guaraci check failed to run",
+        hint: "guaraci check failed to run" + truncatedHint,
         results: unchecked,
       };
     }
@@ -99,7 +128,7 @@ export async function lintTemplates({ cwd }: RpcInput<typeof gcLint>) {
   if (byFile === null) {
     return {
       available: false,
-      hint: "unparseable output from guaraci check",
+      hint: "unparseable output from guaraci check" + truncatedHint,
       results: unchecked,
     };
   }
@@ -114,5 +143,9 @@ export async function lintTemplates({ cwd }: RpcInput<typeof gcLint>) {
       diagnostics,
     };
   });
-  return { available: true, results };
+  return {
+    available: true,
+    hint: truncatedHint ? `guaraci check ran${truncatedHint}` : undefined,
+    results,
+  };
 }

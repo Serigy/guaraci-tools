@@ -3,8 +3,6 @@
   "displayName": "Guaraci .gc Templates",
   "description": "Language support for Guaraci .gc templates: Lua tag highlighting, snippets, and linting via guaraci check.",
   "version": "0.1.0",
-  "categories": ["Programming Languages", "Snippets", "Linters"],
-  "keywords": ["guaraci", "lua", "templates", "html"],
   "publisher": "serigy",
   "license": "BSD-3-Clause",
   "private": true,
@@ -20,7 +18,8 @@
     "guaraci",
     "lua",
     "templates",
-    "gc"
+    "gc",
+    "html"
   ],
   "repository": {
     "type": "git",
@@ -33,7 +32,7 @@
   "homepage": "https://github.com/Serigy/guaraci-tools/tree/main/packages/vscode",
   "main": "./extension.js",
   "scripts": {
-    "test:grammar": "vscode-tmgrammar-snap -g test/grammars/html.tmLanguage.json -g test/grammars/lua.tmLanguage.json -s text.html.gc 'test/fixtures/*.gc'",
+    "test:grammar": "vscode-tmgrammar-snap -g test/grammars/html.tmLanguage.json -g test/grammars/lua.tmLanguage.json -g test/grammars/js.tmLanguage.json -g test/grammars/css.tmLanguage.json -g test/grammars/c.tmLanguage.json -s text.html.gc 'test/fixtures/*.gc'",
     "package": "vsce package --no-dependencies"
   },
   "devDependencies": {

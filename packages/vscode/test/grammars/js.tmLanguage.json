@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "JavaScript (test stand-in)",
+  "scopeName": "source.js",
+  "patterns": [
+    {
+      "match": "\\b(?:var|let|const|function|return|if|else|for|while|new|typeof|this|true|false|null|undefined)\\b",
+      "name": "keyword.other.js"
+    },
+    {
+      "match": "\\b\\d+(?:\\.\\d+)?\\b",
+      "name": "constant.numeric.js"
+    },
+    {
+      "match": "\"[^\"\\n]*\"|'[^'\\n]*'|`[^`\\n]*`",
+      "name": "string.quoted.js"
+    },
+    {
+      "match": "//[^\\n]*",
+      "name": "comment.line.double-slash.js"
+    },
+    {
+      "match": "\\b[A-Za-z_$][\\w$]*(?=\\s*\\()",
+      "name": "entity.name.function.js"
+    },
+    {
+      "match": "\\b[A-Za-z_$][\\w$]*\\b",
+      "name": "variable.other.js"
+    },
+    {
+      "match": "[{}()\\[\\];,.]|[\\-*/%!<>=&|?:]+",
+      "name": "punctuation.js"
+    }
+  ]
+}

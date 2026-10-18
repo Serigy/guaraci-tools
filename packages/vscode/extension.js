@@ -39,7 +39,8 @@ function getConfig() {
 }
 
 function isGcDocument(doc) {
-    return !!doc && (doc.languageId === LANGUAGE_ID || doc.fileName.endsWith(".gc"));
+    if (!doc || !doc.uri || doc.uri.scheme !== "file") return false;
+    return doc.languageId === LANGUAGE_ID || doc.fileName.endsWith(".gc");
 }
 
 // ---------------------------------------------------------------------------
@@ -96,7 +97,7 @@ function cancelPending(key) {
     if (!entry) return;
     if (entry.timer) clearTimeout(entry.timer);
     if (entry.child) {
-        try { entry.child.kill("SIGKILL"); } catch (e) { /* already gone */ }
+        try { entry.child.kill("SIGKILL"); } catch { /* already gone */ }
     }
     pending.delete(key);
 }
@@ -106,7 +107,7 @@ function setPending(key, timer, child) {
     if (previous) {
         if (previous.timer) clearTimeout(previous.timer);
         if (previous.child) {
-            try { previous.child.kill("SIGKILL"); } catch (e) { /* already gone */ }
+            try { previous.child.kill("SIGKILL"); } catch { /* already gone */ }
         }
     }
     pending.set(key, { timer: timer || null, child: child || null });
@@ -146,7 +147,7 @@ function runCheck(doc, key) {
     }
     const args = ["check", "--json", "--mode", String(cfg.get("templateMode") || "html"), doc.uri.fsPath];
     const child = execFile(cmd, args, execOptions(), (err, stdout, stderr) => {
-        pending.delete(key);
+        if (pending.get(key) && pending.get(key).child === child) pending.delete(key);
         if (err && err.killed) return; // cancelled in flight
         if (err && (err.code === "ENOENT" || typeof err.code !== "number")) {
             runFallback(doc, key, cfg);
@@ -165,7 +166,7 @@ function runFallback(doc, key, cfg) {
     }
     const program = buildLuaProgram(cfg, doc);
     const child = execFile(lua, ["-e", program], execOptions(), (err, stdout, stderr) => {
-        pending.delete(key);
+        if (pending.get(key) && pending.get(key).child === child) pending.delete(key);
         if (err && err.killed) return; // cancelled in flight
         if (err && (err.code === "ENOENT" || typeof err.code !== "number")) {
             showUnavailable();
@@ -189,7 +190,7 @@ function parseCheckerOutput(stdout) {
         let obj;
         try {
             obj = JSON.parse(text);
-        } catch (e) {
+        } catch {
             return null;
         }
         if (!obj || !Array.isArray(obj.diagnostics)) return null;

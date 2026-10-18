@@ -32,6 +32,7 @@ export function GcTemplatesPanel({ theme, layout, workspaceId }: PluginWorkspace
       ok: { color: theme.colors.statusSuccess },
       findings: { color: theme.colors.statusDanger },
       unchecked: { color: theme.colors.foregroundMuted },
+      error: { color: theme.colors.statusDanger, fontSize: 13 },
       detail: { color: theme.colors.foregroundMuted, fontSize: 12 },
       refresh: {
         paddingVertical: 8,
@@ -60,11 +61,13 @@ export function GcTemplatesPanel({ theme, layout, workspaceId }: PluginWorkspace
           <Text style={styles.empty}>Workspace directory unavailable.</Text>
         ) : query.isPending ? (
           <Text style={styles.empty}>Checking templates...</Text>
+        ) : query.isError ? (
+          <Text style={styles.error}>
+            gc.lint failed: {query.error instanceof Error ? query.error.message : String(query.error)}
+          </Text>
         ) : (
           <>
-            {data && !data.available ? (
-              <Text style={styles.detail}>{data.hint ?? "guaraci CLI unavailable"}</Text>
-            ) : null}
+            {data?.hint ? <Text style={styles.detail}>{data.hint}</Text> : null}
             {results.length === 0 ? (
               <Text style={styles.empty}>No .gc templates under views/.</Text>
             ) : (

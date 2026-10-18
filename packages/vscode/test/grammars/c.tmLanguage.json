@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "C (test stand-in)",
+  "scopeName": "source.c",
+  "patterns": [
+    {
+      "match": "//[^\\n]*",
+      "name": "comment.line.double-slash.c"
+    },
+    {
+      "match": "/\\*[\\s\\S]*?\\*/",
+      "name": "comment.block.c"
+    },
+    {
+      "match": "\"[^\"\\n]*\"",
+      "name": "string.quoted.double.c"
+    },
+    {
+      "match": "\\b(?:if|else|for|while|do|switch|case|break|continue|return|goto|typedef|struct|union|enum|static|extern|const|volatile|register|auto|inline|sizeof|void|char|short|int|long|float|double|signed|unsigned|_Bool)\\b",
+      "name": "keyword.c"
+    },
+    {
+      "match": "\\b\\d+\\b",
+      "name": "constant.numeric.c"
+    },
+    {
+      "match": "\\b[A-Za-z_]\\w*\\b",
+      "name": "variable.other.c"
+    },
+    {
+      "match": "[{}()\\[\\];,.]|[-+*/%&|^!<>?=]+",
+      "name": "punctuation.c"
+    }
+  ]
+}

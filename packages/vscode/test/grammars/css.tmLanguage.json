@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "CSS (test stand-in)",
+  "scopeName": "source.css",
+  "patterns": [
+    {
+      "match": "/\\*[\\s\\S]*?\\*/",
+      "name": "comment.block.css"
+    },
+    {
+      "match": "\\.[A-Za-z_][\\w-]*",
+      "name": "entity.other.attribute-name.class.css"
+    },
+    {
+      "match": ":{1,2}[A-Za-z_][\\w-]*",
+      "name": "entity.other.attribute-name.pseudo-class.css"
+    },
+    {
+      "match": "#[0-9a-fA-F]{3,8}\\b",
+      "name": "constant.numeric.color.hex.css"
+    },
+    {
+      "match": "\"[^\"\\n]*\"|'[^'\\n]*'",
+      "name": "string.quoted.css"
+    },
+    {
+      "match": "[A-Za-z-]+(?=\\s*:)",
+      "name": "support.type.property-name.css"
+    },
+    {
+      "match": "\\b\\d+(?:\\.\\d+)?(?:px|em|rem|vh|vw|%)?\\b",
+      "name": "constant.numeric.css"
+    },
+    {
+      "match": "[{}();,:]",
+      "name": "punctuation.css"
+    }
+  ]
+}

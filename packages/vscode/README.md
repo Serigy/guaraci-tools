@@ -51,6 +51,8 @@ Test grammars vendored under `test/grammars/` (see `test/grammars/README.md`) ar
 
 ## Known limitations
 
+- An unclosed `<%` runs to the next `%>` (or end of file): the grammar keeps the Lua scope open that far, and the linter flags it as `template-syntax`.
+- `%>` inside a Lua string literal ends the tag for the compiler; there is no escape sequence for it.
 - `guaraci check` flags `<%` inside HTML comments as an unclosed tag; keep Lua out of comments.
 - This package was developed and verified without a local VS Code binary (snapshots, `node --check`, `vsce ls`); the visual UI check in a real editor is a user step.
 
