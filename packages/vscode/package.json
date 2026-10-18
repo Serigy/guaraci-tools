@@ -3,6 +3,8 @@
   "displayName": "Guaraci .gc Templates",
   "description": "Language support for Guaraci .gc templates: Lua tag highlighting, snippets, and linting via guaraci check.",
   "version": "0.1.0",
+  "categories": ["Programming Languages", "Snippets", "Linters"],
+  "keywords": ["guaraci", "lua", "templates", "html"],
   "publisher": "serigy",
   "license": "BSD-3-Clause",
   "private": true,
