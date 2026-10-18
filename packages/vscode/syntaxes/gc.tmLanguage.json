@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Guaraci Template",
+  "scopeName": "text.html.gc",
+  "patterns": [
+    {
+      "include": "#gc-tag"
+    },
+    {
+      "include": "text.html.basic"
+    }
+  ],
+  "repository": {
+    "gc-tag": {
+      "comment": "Classic-ASP-style Lua tags: <%= expression %> and <% code %>",
+      "patterns": [
+        {
+          "include": "#gc-expr"
+        },
+        {
+          "include": "#gc-code"
+        }
+      ]
+    },
+"gc-expr": {
+      "contentName": "meta.embedded.line.lua source.lua",
+      "begin": "<%=",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.template.begin.gc"
+        }
+      },
+      "end": "%>",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.template.end.gc"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.lua"
+        }
+      ]
+    },
+"gc-code": {
+      "contentName": "meta.embedded.block.lua source.lua",
+      "begin": "<%(?!=)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.template.begin.gc"
+        }
+      },
+      "end": "%>",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.template.end.gc"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.lua"
+        }
+      ]
+    }
+  }
+}

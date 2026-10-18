@@ -1,0 +1,9 @@
+<script>
+  var name = "<%= Request.query.value %>";
+  if (name) { alert(name); }
+</script>
+<script>var x = "<%= Request.query.value %>"</script>
+<style>
+  .greeting::after { content: "<%= Request.query.value %>"; }
+  body { color: <%= theme_color %>; }
+</style>

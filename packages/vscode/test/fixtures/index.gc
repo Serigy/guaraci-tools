@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title><%= site_name %></title>
+</head>
+<body>
+  <h1>Guaraci MVP</h1>
+  <p>Ola, <%= Request.query.nome or "visitante" %>!</p>
+  <% if Request.query.admin then %>
+    <p class="badge">admin</p>
+  <% end %>
+  <ul>
+  <% for i, item in ipairs(items) do %>
+    <li><%= item.name %></li>
+  <% end %>
+  </ul>
+  <% include('footer', { year = os.date('%Y') }) %>
+  <!-- html comment, <% inside is not highlighted %> -->
+</body>
+</html>

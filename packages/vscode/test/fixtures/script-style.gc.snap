@@ -1,0 +1,72 @@
+><script>
+#^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.start.html punctuation.definition.tag.begin.html
+# ^^^^^^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.start.html entity.name.tag.html
+#       ^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.start.html punctuation.definition.tag.end.html
+>  var name = "<%= Request.query.value %>";
+#^^^^^^^^^^^^^^ text.html.gc meta.embedded.block.html source.js
+#              ^^^ text.html.gc meta.embedded.block.html source.js punctuation.definition.template.begin.gc
+#                 ^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua
+#                  ^^^^^^^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua variable.other.lua
+#                         ^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua
+#                          ^^^^^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua entity.other.attribute.lua
+#                               ^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua
+#                                ^^^^^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua entity.other.attribute.lua
+#                                     ^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua
+#                                      ^^ text.html.gc meta.embedded.block.html source.js punctuation.definition.template.end.gc
+#                                        ^^^ text.html.gc meta.embedded.block.html source.js
+>  if (name) { alert(name); }
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ text.html.gc meta.embedded.block.html source.js
+></script>
+#^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.end.html punctuation.definition.tag.begin.html source.js-ignored-vscode
+# ^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.end.html punctuation.definition.tag.begin.html
+#  ^^^^^^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.end.html entity.name.tag.html
+#        ^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.end.html punctuation.definition.tag.end.html
+><script>var x = "<%= Request.query.value %>"</script>
+#^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.start.html punctuation.definition.tag.begin.html
+# ^^^^^^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.start.html entity.name.tag.html
+#       ^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.start.html punctuation.definition.tag.end.html
+#        ^^^^^^^^^ text.html.gc meta.embedded.block.html source.js
+#                 ^^^ text.html.gc meta.embedded.block.html source.js punctuation.definition.template.begin.gc
+#                    ^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua
+#                     ^^^^^^^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua variable.other.lua
+#                            ^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua
+#                             ^^^^^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua entity.other.attribute.lua
+#                                  ^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua
+#                                   ^^^^^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua entity.other.attribute.lua
+#                                        ^ text.html.gc meta.embedded.block.html source.js meta.embedded.line.lua source.lua
+#                                         ^^ text.html.gc meta.embedded.block.html source.js punctuation.definition.template.end.gc
+#                                           ^ text.html.gc meta.embedded.block.html source.js
+#                                            ^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.end.html punctuation.definition.tag.begin.html source.js-ignored-vscode
+#                                             ^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.end.html punctuation.definition.tag.begin.html
+#                                              ^^^^^^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.end.html entity.name.tag.html
+#                                                    ^ text.html.gc meta.embedded.block.html meta.tag.metadata.script.end.html punctuation.definition.tag.end.html
+><style>
+#^ text.html.gc meta.embedded.block.html meta.tag.metadata.style.start.html punctuation.definition.tag.begin.html
+# ^^^^^ text.html.gc meta.embedded.block.html meta.tag.metadata.style.start.html entity.name.tag.html
+#      ^ text.html.gc meta.embedded.block.html meta.tag.metadata.style.start.html punctuation.definition.tag.end.html
+>  .greeting::after { content: "<%= Request.query.value %>"; }
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ text.html.gc meta.embedded.block.html
+#                               ^^^ text.html.gc meta.embedded.block.html punctuation.definition.template.begin.gc
+#                                  ^ text.html.gc meta.embedded.block.html meta.embedded.line.lua source.lua
+#                                   ^^^^^^^ text.html.gc meta.embedded.block.html meta.embedded.line.lua source.lua variable.other.lua
+#                                          ^ text.html.gc meta.embedded.block.html meta.embedded.line.lua source.lua
+#                                           ^^^^^ text.html.gc meta.embedded.block.html meta.embedded.line.lua source.lua entity.other.attribute.lua
+#                                                ^ text.html.gc meta.embedded.block.html meta.embedded.line.lua source.lua
+#                                                 ^^^^^ text.html.gc meta.embedded.block.html meta.embedded.line.lua source.lua entity.other.attribute.lua
+#                                                      ^ text.html.gc meta.embedded.block.html meta.embedded.line.lua source.lua
+#                                                       ^^ text.html.gc meta.embedded.block.html punctuation.definition.template.end.gc
+#                                                         ^^^^^ text.html.gc meta.embedded.block.html
+>  body { color: <%= theme_color %>; }
+#^^^^^^^^^^^^^^^^ text.html.gc meta.embedded.block.html
+#                ^^^ text.html.gc meta.embedded.block.html punctuation.definition.template.begin.gc
+#                   ^ text.html.gc meta.embedded.block.html meta.embedded.line.lua source.lua
+#                    ^^^^^^^^^^^ text.html.gc meta.embedded.block.html meta.embedded.line.lua source.lua variable.other.lua
+#                               ^ text.html.gc meta.embedded.block.html meta.embedded.line.lua source.lua
+#                                ^^ text.html.gc meta.embedded.block.html punctuation.definition.template.end.gc
+#                                  ^^^^ text.html.gc meta.embedded.block.html
+></style>
+#^ text.html.gc meta.embedded.block.html meta.tag.metadata.style.end.html punctuation.definition.tag.begin.html source.css-ignored-vscode
+# ^ text.html.gc meta.embedded.block.html meta.tag.metadata.style.end.html punctuation.definition.tag.begin.html
+#  ^^^^^ text.html.gc meta.embedded.block.html meta.tag.metadata.style.end.html entity.name.tag.html
+#       ^ text.html.gc meta.embedded.block.html meta.tag.metadata.style.end.html punctuation.definition.tag.end.html
+>

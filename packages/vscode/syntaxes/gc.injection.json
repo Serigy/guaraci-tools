@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "gc.injection",
+  "injectionSelector": "L:text.html.gc -comment",
+  "patterns": [
+    {
+      "include": "#gc-expr"
+    },
+    {
+      "include": "#gc-code"
+    }
+  ],
+  "repository": {
+"gc-expr": {
+      "contentName": "meta.embedded.line.lua source.lua",
+      "begin": "<%=",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.template.begin.gc"
+        }
+      },
+      "end": "%>",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.template.end.gc"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.lua"
+        }
+      ]
+    },
+"gc-code": {
+      "contentName": "meta.embedded.block.lua source.lua",
+      "begin": "<%(?!=)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.template.begin.gc"
+        }
+      },
+      "end": "%>",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.template.end.gc"
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.lua"
+        }
+      ]
+    }
+  }
+}

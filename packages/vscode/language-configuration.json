@@ -1,0 +1,134 @@
+{
+  "comments": {
+    "blockComment": [
+      "<!--",
+      "-->"
+    ]
+  },
+  "brackets": [
+    [
+      "<%",
+      "%>"
+    ],
+    [
+      "(",
+      ")"
+    ],
+    [
+      "[",
+      "]"
+    ],
+    [
+      "{",
+      "}"
+    ],
+    [
+      "<",
+      ">"
+    ]
+  ],
+  "autoCloseBefore": "%>\"'",
+  "autoClosingPairs": [
+    {
+      "open": "<!--",
+      "close": "-->",
+      "notIn": [
+        "string"
+      ]
+    },
+    {
+      "open": "<%=",
+      "close": " %>"
+    },
+    {
+      "open": "<%",
+      "close": " %>"
+    },
+    {
+      "open": "\"",
+      "close": "\"",
+      "notIn": [
+        "string"
+      ]
+    },
+    {
+      "open": "'",
+      "close": "'",
+      "notIn": [
+        "string",
+        "comment"
+      ]
+    },
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "{",
+      "close": "}"
+    }
+  ],
+  "colorizedBracketPairs": [
+    [
+      "<%",
+      "%>"
+    ],
+    [
+      "(",
+      ")"
+    ],
+    [
+      "[",
+      "]"
+    ],
+    [
+      "{",
+      "}"
+    ],
+    [
+      "<",
+      ">"
+    ]
+  ],
+  "surroundingPairs": [
+    [
+      "<%",
+      "%>"
+    ],
+    [
+      "<",
+      ">"
+    ],
+    [
+      "\"",
+      "\""
+    ],
+    [
+      "'",
+      "'"
+    ],
+    [
+      "(",
+      ")"
+    ],
+    [
+      "[",
+      "]"
+    ],
+    [
+      "{",
+      "}"
+    ]
+  ],
+  "folding": {
+    "markers": {
+      "start": "^\\s*<%\\s*(if|for|while|function|do)\\b",
+      "end": "^\\s*<%\\s*end\\s*%>"
+    }
+  },
+  "wordPattern": "[\\w$]+([\\w$-]*[\\w$])?"
+}

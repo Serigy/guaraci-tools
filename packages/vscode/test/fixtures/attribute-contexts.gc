@@ -1,0 +1,6 @@
+<a href="<%= Request.query.url %>">link</a>
+<a href="<%= Request.query.value %>">x</a>
+<img alt="<%= description %>" src="<%= item.image %>">
+<div class="card <%= variant %>">
+  <input value="<%= upper(Request.query.name) %>">
+</div>

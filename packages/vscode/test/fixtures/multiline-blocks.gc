@@ -1,0 +1,17 @@
+<%
+  local upper = string.upper
+  local function badge(label)
+    return partial('badge', { label = label })
+  end
+%>
+<% if user and user.active then %>
+  <span><%= badge(user.name) %></span>
+<% elseif user then %>
+  <span>inactive</span>
+<% end %>
+<% for i = 1, 10 do %>
+  <p>row <%= i %></p>
+<% end %>
+<% while queue:peek() do %>
+  <p><%= queue:pop() %></p>
+<% end %>

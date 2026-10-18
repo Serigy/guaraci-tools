@@ -1,0 +1,2 @@
+<p>unclosed</p>
+<%= Request.query.value

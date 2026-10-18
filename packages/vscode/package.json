@@ -31,12 +31,12 @@
   "homepage": "https://github.com/Serigy/guaraci-tools/tree/main/packages/vscode",
   "main": "./extension.js",
   "scripts": {
-    "test:grammar": "vscode-tmgrammar-snap -g syntaxes/gc.tmLanguage.json -s text.html.gc 'test/fixtures/*.gc'",
+    "test:grammar": "vscode-tmgrammar-snap -g test/grammars/html.tmLanguage.json -g test/grammars/lua.tmLanguage.json -s text.html.gc 'test/fixtures/*.gc'",
     "package": "vsce package --no-dependencies"
   },
   "devDependencies": {
     "@vscode/vsce": "^3.0.0",
-    "vscode-tmgrammar-snap": "^1.3.0"
+    "vscode-tmgrammar-test": "^0.1.3"
   },
   "contributes": {
     "languages": [

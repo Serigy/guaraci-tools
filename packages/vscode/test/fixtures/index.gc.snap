@@ -1,0 +1,208 @@
+><!DOCTYPE html>
+#^^ text.html.gc meta.tag.metadata.doctype.html punctuation.definition.tag.begin.html
+#  ^^^^^^^ text.html.gc meta.tag.metadata.doctype.html entity.name.tag.html
+#         ^ text.html.gc meta.tag.metadata.doctype.html
+#          ^^^^ text.html.gc meta.tag.metadata.doctype.html entity.other.attribute-name.html
+#              ^ text.html.gc meta.tag.metadata.doctype.html punctuation.definition.tag.end.html
+><html lang="pt-BR">
+#^ text.html.gc meta.tag.structure.html.start.html punctuation.definition.tag.begin.html
+# ^^^^ text.html.gc meta.tag.structure.html.start.html entity.name.tag.html
+#     ^ text.html.gc meta.tag.structure.html.start.html
+#      ^^^^ text.html.gc meta.tag.structure.html.start.html meta.attribute.lang.html entity.other.attribute-name.html
+#          ^ text.html.gc meta.tag.structure.html.start.html meta.attribute.lang.html punctuation.separator.key-value.html
+#           ^ text.html.gc meta.tag.structure.html.start.html meta.attribute.lang.html string.quoted.double.html punctuation.definition.string.begin.html
+#            ^^^^^ text.html.gc meta.tag.structure.html.start.html meta.attribute.lang.html string.quoted.double.html
+#                 ^ text.html.gc meta.tag.structure.html.start.html meta.attribute.lang.html string.quoted.double.html punctuation.definition.string.end.html
+#                  ^ text.html.gc meta.tag.structure.html.start.html punctuation.definition.tag.end.html
+><head>
+#^ text.html.gc meta.tag.structure.head.start.html punctuation.definition.tag.begin.html
+# ^^^^ text.html.gc meta.tag.structure.head.start.html entity.name.tag.html
+#     ^ text.html.gc meta.tag.structure.head.start.html punctuation.definition.tag.end.html
+>  <meta charset="utf-8">
+#^^ text.html.gc
+#  ^ text.html.gc meta.tag.metadata.meta.void.html punctuation.definition.tag.begin.html
+#   ^^^^ text.html.gc meta.tag.metadata.meta.void.html entity.name.tag.html
+#       ^ text.html.gc meta.tag.metadata.meta.void.html
+#        ^^^^^^^ text.html.gc meta.tag.metadata.meta.void.html meta.attribute.charset.html entity.other.attribute-name.html
+#               ^ text.html.gc meta.tag.metadata.meta.void.html meta.attribute.charset.html punctuation.separator.key-value.html
+#                ^ text.html.gc meta.tag.metadata.meta.void.html meta.attribute.charset.html string.quoted.double.html punctuation.definition.string.begin.html
+#                 ^^^^^ text.html.gc meta.tag.metadata.meta.void.html meta.attribute.charset.html string.quoted.double.html
+#                      ^ text.html.gc meta.tag.metadata.meta.void.html meta.attribute.charset.html string.quoted.double.html punctuation.definition.string.end.html
+#                       ^ text.html.gc meta.tag.metadata.meta.void.html punctuation.definition.tag.end.html
+>  <title><%= site_name %></title>
+#^^ text.html.gc
+#  ^ text.html.gc meta.tag.metadata.title.start.html punctuation.definition.tag.begin.html
+#   ^^^^^ text.html.gc meta.tag.metadata.title.start.html entity.name.tag.html
+#        ^ text.html.gc meta.tag.metadata.title.start.html punctuation.definition.tag.end.html
+#         ^^^ text.html.gc punctuation.definition.template.begin.gc
+#            ^ text.html.gc meta.embedded.line.lua source.lua
+#             ^^^^^^^^^ text.html.gc meta.embedded.line.lua source.lua variable.other.lua
+#                      ^ text.html.gc meta.embedded.line.lua source.lua
+#                       ^^ text.html.gc punctuation.definition.template.end.gc
+#                         ^^ text.html.gc meta.tag.metadata.title.end.html punctuation.definition.tag.begin.html
+#                           ^^^^^ text.html.gc meta.tag.metadata.title.end.html entity.name.tag.html
+#                                ^ text.html.gc meta.tag.metadata.title.end.html punctuation.definition.tag.end.html
+></head>
+#^^ text.html.gc meta.tag.structure.head.end.html punctuation.definition.tag.begin.html
+#  ^^^^ text.html.gc meta.tag.structure.head.end.html entity.name.tag.html
+#      ^ text.html.gc meta.tag.structure.head.end.html punctuation.definition.tag.end.html
+><body>
+#^ text.html.gc meta.tag.structure.body.start.html punctuation.definition.tag.begin.html
+# ^^^^ text.html.gc meta.tag.structure.body.start.html entity.name.tag.html
+#     ^ text.html.gc meta.tag.structure.body.start.html punctuation.definition.tag.end.html
+>  <h1>Guaraci MVP</h1>
+#^^ text.html.gc
+#  ^ text.html.gc meta.tag.structure.h1.start.html punctuation.definition.tag.begin.html
+#   ^^ text.html.gc meta.tag.structure.h1.start.html entity.name.tag.html
+#     ^ text.html.gc meta.tag.structure.h1.start.html punctuation.definition.tag.end.html
+#      ^^^^^^^^^^^ text.html.gc
+#                 ^^ text.html.gc meta.tag.structure.h1.end.html punctuation.definition.tag.begin.html
+#                   ^^ text.html.gc meta.tag.structure.h1.end.html entity.name.tag.html
+#                     ^ text.html.gc meta.tag.structure.h1.end.html punctuation.definition.tag.end.html
+>  <p>Ola, <%= Request.query.nome or "visitante" %>!</p>
+#^^ text.html.gc
+#  ^ text.html.gc meta.tag.structure.p.start.html punctuation.definition.tag.begin.html
+#   ^ text.html.gc meta.tag.structure.p.start.html entity.name.tag.html
+#    ^ text.html.gc meta.tag.structure.p.start.html punctuation.definition.tag.end.html
+#     ^^^^^ text.html.gc
+#          ^^^ text.html.gc punctuation.definition.template.begin.gc
+#             ^ text.html.gc meta.embedded.line.lua source.lua
+#              ^^^^^^^ text.html.gc meta.embedded.line.lua source.lua variable.other.lua
+#                     ^ text.html.gc meta.embedded.line.lua source.lua
+#                      ^^^^^ text.html.gc meta.embedded.line.lua source.lua entity.other.attribute.lua
+#                           ^ text.html.gc meta.embedded.line.lua source.lua
+#                            ^^^^ text.html.gc meta.embedded.line.lua source.lua entity.other.attribute.lua
+#                                ^ text.html.gc meta.embedded.line.lua source.lua
+#                                 ^^ text.html.gc meta.embedded.line.lua source.lua keyword.operator.logical.lua
+#                                   ^ text.html.gc meta.embedded.line.lua source.lua
+#                                    ^ text.html.gc meta.embedded.line.lua source.lua string.quoted.double.lua punctuation.definition.string.begin.lua
+#                                     ^^^^^^^^^ text.html.gc meta.embedded.line.lua source.lua string.quoted.double.lua
+#                                              ^^ text.html.gc meta.embedded.line.lua source.lua string.quoted.double.lua punctuation.definition.string.end.lua
+#                                                ^^ text.html.gc punctuation.definition.template.end.gc
+#                                                  ^ text.html.gc
+#                                                   ^^ text.html.gc meta.tag.structure.p.end.html punctuation.definition.tag.begin.html
+#                                                     ^ text.html.gc meta.tag.structure.p.end.html entity.name.tag.html
+#                                                      ^ text.html.gc meta.tag.structure.p.end.html punctuation.definition.tag.end.html
+>  <% if Request.query.admin then %>
+#^^ text.html.gc
+#  ^^ text.html.gc punctuation.definition.template.begin.gc
+#    ^ text.html.gc meta.embedded.block.lua source.lua
+#     ^^ text.html.gc meta.embedded.block.lua source.lua keyword.control.lua
+#       ^ text.html.gc meta.embedded.block.lua source.lua
+#        ^^^^^^^ text.html.gc meta.embedded.block.lua source.lua variable.other.lua
+#               ^ text.html.gc meta.embedded.block.lua source.lua
+#                ^^^^^ text.html.gc meta.embedded.block.lua source.lua entity.other.attribute.lua
+#                     ^ text.html.gc meta.embedded.block.lua source.lua
+#                      ^^^^^ text.html.gc meta.embedded.block.lua source.lua entity.other.attribute.lua
+#                           ^ text.html.gc meta.embedded.block.lua source.lua
+#                            ^^^^ text.html.gc meta.embedded.block.lua source.lua keyword.control.lua
+#                                ^ text.html.gc meta.embedded.block.lua source.lua
+#                                 ^^ text.html.gc punctuation.definition.template.end.gc
+>    <p class="badge">admin</p>
+#^^^^ text.html.gc
+#    ^ text.html.gc meta.tag.structure.p.start.html punctuation.definition.tag.begin.html
+#     ^ text.html.gc meta.tag.structure.p.start.html entity.name.tag.html
+#      ^ text.html.gc meta.tag.structure.p.start.html
+#       ^^^^^ text.html.gc meta.tag.structure.p.start.html meta.attribute.class.html entity.other.attribute-name.html
+#            ^ text.html.gc meta.tag.structure.p.start.html meta.attribute.class.html punctuation.separator.key-value.html
+#             ^ text.html.gc meta.tag.structure.p.start.html meta.attribute.class.html string.quoted.double.html punctuation.definition.string.begin.html
+#              ^^^^^ text.html.gc meta.tag.structure.p.start.html meta.attribute.class.html string.quoted.double.html
+#                   ^ text.html.gc meta.tag.structure.p.start.html meta.attribute.class.html string.quoted.double.html punctuation.definition.string.end.html
+#                    ^ text.html.gc meta.tag.structure.p.start.html punctuation.definition.tag.end.html
+#                     ^^^^^ text.html.gc
+#                          ^^ text.html.gc meta.tag.structure.p.end.html punctuation.definition.tag.begin.html
+#                            ^ text.html.gc meta.tag.structure.p.end.html entity.name.tag.html
+#                             ^ text.html.gc meta.tag.structure.p.end.html punctuation.definition.tag.end.html
+>  <% end %>
+#^^ text.html.gc
+#  ^^ text.html.gc punctuation.definition.template.begin.gc
+#    ^ text.html.gc meta.embedded.block.lua source.lua
+#     ^^^ text.html.gc meta.embedded.block.lua source.lua keyword.control.lua
+#        ^ text.html.gc meta.embedded.block.lua source.lua
+#         ^^ text.html.gc punctuation.definition.template.end.gc
+>  <ul>
+#^^ text.html.gc
+#  ^ text.html.gc meta.tag.structure.ul.start.html punctuation.definition.tag.begin.html
+#   ^^ text.html.gc meta.tag.structure.ul.start.html entity.name.tag.html
+#     ^ text.html.gc meta.tag.structure.ul.start.html punctuation.definition.tag.end.html
+>  <% for i, item in ipairs(items) do %>
+#^^ text.html.gc
+#  ^^ text.html.gc punctuation.definition.template.begin.gc
+#    ^ text.html.gc meta.embedded.block.lua source.lua
+#     ^^^ text.html.gc meta.embedded.block.lua source.lua keyword.control.lua
+#        ^ text.html.gc meta.embedded.block.lua source.lua
+#         ^ text.html.gc meta.embedded.block.lua source.lua variable.other.lua
+#          ^^ text.html.gc meta.embedded.block.lua source.lua
+#            ^^^^ text.html.gc meta.embedded.block.lua source.lua variable.other.lua
+#                ^ text.html.gc meta.embedded.block.lua source.lua
+#                 ^^ text.html.gc meta.embedded.block.lua source.lua keyword.control.lua
+#                   ^ text.html.gc meta.embedded.block.lua source.lua
+#                    ^^^^^^ text.html.gc meta.embedded.block.lua source.lua support.function.lua
+#                          ^ text.html.gc meta.embedded.block.lua source.lua
+#                           ^^^^^ text.html.gc meta.embedded.block.lua source.lua variable.other.lua
+#                                ^^ text.html.gc meta.embedded.block.lua source.lua
+#                                  ^^ text.html.gc meta.embedded.block.lua source.lua keyword.control.lua
+#                                    ^ text.html.gc meta.embedded.block.lua source.lua
+#                                     ^^ text.html.gc punctuation.definition.template.end.gc
+>    <li><%= item.name %></li>
+#^^^^ text.html.gc
+#    ^ text.html.gc meta.tag.structure.li.start.html punctuation.definition.tag.begin.html
+#     ^^ text.html.gc meta.tag.structure.li.start.html entity.name.tag.html
+#       ^ text.html.gc meta.tag.structure.li.start.html punctuation.definition.tag.end.html
+#        ^^^ text.html.gc punctuation.definition.template.begin.gc
+#           ^ text.html.gc meta.embedded.line.lua source.lua
+#            ^^^^ text.html.gc meta.embedded.line.lua source.lua variable.other.lua
+#                ^ text.html.gc meta.embedded.line.lua source.lua
+#                 ^^^^ text.html.gc meta.embedded.line.lua source.lua entity.other.attribute.lua
+#                     ^ text.html.gc meta.embedded.line.lua source.lua
+#                      ^^ text.html.gc punctuation.definition.template.end.gc
+#                        ^^ text.html.gc meta.tag.structure.li.end.html punctuation.definition.tag.begin.html
+#                          ^^ text.html.gc meta.tag.structure.li.end.html entity.name.tag.html
+#                            ^ text.html.gc meta.tag.structure.li.end.html punctuation.definition.tag.end.html
+>  <% end %>
+#^^ text.html.gc
+#  ^^ text.html.gc punctuation.definition.template.begin.gc
+#    ^ text.html.gc meta.embedded.block.lua source.lua
+#     ^^^ text.html.gc meta.embedded.block.lua source.lua keyword.control.lua
+#        ^ text.html.gc meta.embedded.block.lua source.lua
+#         ^^ text.html.gc punctuation.definition.template.end.gc
+>  </ul>
+#^^ text.html.gc
+#  ^^ text.html.gc meta.tag.structure.ul.end.html punctuation.definition.tag.begin.html
+#    ^^ text.html.gc meta.tag.structure.ul.end.html entity.name.tag.html
+#      ^ text.html.gc meta.tag.structure.ul.end.html punctuation.definition.tag.end.html
+>  <% include('footer', { year = os.date('%Y') }) %>
+#^^ text.html.gc
+#  ^^ text.html.gc punctuation.definition.template.begin.gc
+#    ^ text.html.gc meta.embedded.block.lua source.lua
+#     ^^^^^^^ text.html.gc meta.embedded.block.lua source.lua support.function.any-method.lua
+#            ^ text.html.gc meta.embedded.block.lua source.lua
+#             ^ text.html.gc meta.embedded.block.lua source.lua string.quoted.single.lua punctuation.definition.string.begin.lua
+#              ^^^^^^ text.html.gc meta.embedded.block.lua source.lua string.quoted.single.lua
+#                    ^ text.html.gc meta.embedded.block.lua source.lua string.quoted.single.lua punctuation.definition.string.end.lua
+#                     ^^^^ text.html.gc meta.embedded.block.lua source.lua
+#                         ^^^^ text.html.gc meta.embedded.block.lua source.lua variable.other.lua
+#                             ^ text.html.gc meta.embedded.block.lua source.lua
+#                              ^ text.html.gc meta.embedded.block.lua source.lua keyword.operator.lua
+#                               ^ text.html.gc meta.embedded.block.lua source.lua
+#                                ^^^^^^^ text.html.gc meta.embedded.block.lua source.lua support.function.library.lua
+#                                       ^ text.html.gc meta.embedded.block.lua source.lua
+#                                        ^ text.html.gc meta.embedded.block.lua source.lua string.quoted.single.lua punctuation.definition.string.begin.lua
+#                                         ^^ text.html.gc meta.embedded.block.lua source.lua string.quoted.single.lua
+#                                           ^ text.html.gc meta.embedded.block.lua source.lua string.quoted.single.lua punctuation.definition.string.end.lua
+#                                            ^^^^^ text.html.gc meta.embedded.block.lua source.lua
+#                                                 ^^ text.html.gc punctuation.definition.template.end.gc
+>  <!-- html comment, <% inside is not highlighted %> -->
+#^^ text.html.gc
+#  ^^^^ text.html.gc comment.block.html punctuation.definition.comment.html
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ text.html.gc comment.block.html
+#                                                     ^^^ text.html.gc comment.block.html punctuation.definition.comment.html
+></body>
+#^^ text.html.gc meta.tag.structure.body.end.html punctuation.definition.tag.begin.html
+#  ^^^^ text.html.gc meta.tag.structure.body.end.html entity.name.tag.html
+#      ^ text.html.gc meta.tag.structure.body.end.html punctuation.definition.tag.end.html
+></html>
+#^^ text.html.gc meta.tag.structure.html.end.html punctuation.definition.tag.begin.html
+#  ^^^^ text.html.gc meta.tag.structure.html.end.html entity.name.tag.html
+#      ^ text.html.gc meta.tag.structure.html.end.html punctuation.definition.tag.end.html
+>
