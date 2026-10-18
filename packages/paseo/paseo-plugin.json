@@ -1,0 +1,7 @@
+{
+  "id": "guaraci-gc",
+  "name": "Guaraci .gc templates",
+  "requirements": {
+    "paseo": ">=0.11.4"
+  }
+}
