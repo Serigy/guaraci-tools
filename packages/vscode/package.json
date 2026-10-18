@@ -1,0 +1,132 @@
+{
+  "name": "guaraci",
+  "displayName": "Guaraci .gc Templates",
+  "description": "Language support for Guaraci .gc templates: Lua tag highlighting, snippets, and linting via guaraci check.",
+  "version": "0.1.0",
+  "publisher": "serigy",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Linters"
+  ],
+  "keywords": [
+    "guaraci",
+    "lua",
+    "templates",
+    "gc"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Serigy/guaraci-tools.git",
+    "directory": "packages/vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/Serigy/guaraci-tools/issues"
+  },
+  "homepage": "https://github.com/Serigy/guaraci-tools/tree/main/packages/vscode",
+  "main": "./extension.js",
+  "scripts": {
+    "test:grammar": "vscode-tmgrammar-snap -g syntaxes/gc.tmLanguage.json -s text.html.gc 'test/fixtures/*.gc'",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.0.0",
+    "vscode-tmgrammar-snap": "^1.3.0"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "gc",
+        "aliases": [
+          "Guaraci Template",
+          "gc"
+        ],
+        "extensions": [
+          ".gc"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "gc",
+        "scopeName": "text.html.gc",
+        "path": "./syntaxes/gc.tmLanguage.json",
+        "embeddedLanguages": {
+          "source.lua": "lua"
+        }
+      },
+      {
+        "scopeName": "gc.injection",
+        "injectTo": [
+          "text.html.gc"
+        ],
+        "path": "./syntaxes/gc.injection.json",
+        "embeddedLanguages": {
+          "source.lua": "lua"
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "guaraci.checkFile",
+        "title": "Check Current File",
+        "category": "Guaraci"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "gc",
+        "path": "./snippets/gc.json"
+      }
+    ],
+    "configuration": {
+      "title": "Guaraci",
+      "properties": {
+        "guaraci.checkCommand": {
+          "type": "string",
+          "default": "guaraci",
+          "markdownDescription": "Guaraci CLI binary used for linting (as installed by LuaRocks). May be an absolute path. Falls back to the `guaraci.luaPath` interpreter when not found.",
+          "order": 1
+        },
+        "guaraci.luaPath": {
+          "type": "string",
+          "default": "lua5.4",
+          "markdownDescription": "Lua interpreter used by the fallback linter when `guaraci.checkCommand` cannot be spawned. It runs `require('guaraci_cli.check')` directly.",
+          "order": 2
+        },
+        "guaraci.srcPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Path to a guaraci source checkout (the directory that contains `src/guaraci_cli/check.lua`). Added to `package.path` for the fallback linter. Leave empty when guaraci is installed via LuaRocks.",
+          "order": 3
+        },
+        "guaraci.lintOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run guaraci check when a .gc file is saved.",
+          "order": 4
+        },
+        "guaraci.templateMode": {
+          "type": "string",
+          "enum": [
+            "html",
+            "text"
+          ],
+          "default": "html",
+          "enumDescriptions": [
+            "HTML mode (default): flags <%= %> inside <script>/<style> blocks as blocked contexts.",
+            "Text mode: allows <%= %> inside <script>/<style> (no blocked-context warnings)."
+          ],
+          "markdownDescription": "Template mode passed as `--mode` to `guaraci check`.",
+          "order": 5
+        }
+      }
+    }
+  }
+}
