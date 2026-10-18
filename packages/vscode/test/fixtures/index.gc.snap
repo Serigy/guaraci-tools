@@ -192,11 +192,11 @@
 #                                           ^ text.html.gc meta.embedded.block.lua source.lua string.quoted.single.lua punctuation.definition.string.end.lua
 #                                            ^^^^^ text.html.gc meta.embedded.block.lua source.lua
 #                                                 ^^ text.html.gc punctuation.definition.template.end.gc
->  <!-- html comment, <% inside is not highlighted %> -->
+>  <!-- html comment, template tags here are not highlighted -->
 #^^ text.html.gc
 #  ^^^^ text.html.gc comment.block.html punctuation.definition.comment.html
-#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ text.html.gc comment.block.html
-#                                                     ^^^ text.html.gc comment.block.html punctuation.definition.comment.html
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ text.html.gc comment.block.html
+#                                                            ^^^ text.html.gc comment.block.html punctuation.definition.comment.html
 ></body>
 #^^ text.html.gc meta.tag.structure.body.end.html punctuation.definition.tag.begin.html
 #  ^^^^ text.html.gc meta.tag.structure.body.end.html entity.name.tag.html

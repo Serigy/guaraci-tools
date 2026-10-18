@@ -16,6 +16,6 @@
   <% end %>
   </ul>
   <% include('footer', { year = os.date('%Y') }) %>
-  <!-- html comment, <% inside is not highlighted %> -->
+  <!-- html comment, template tags here are not highlighted -->
 </body>
 </html>
